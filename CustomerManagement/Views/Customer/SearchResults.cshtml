@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CustomerManagement.Models.Customer>
+
+@{
+    ViewData["Title"] = "SearchResults";
+}
+
+<h1>Customer Profile</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Customer Birthday</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.CustomerName</td>
+                <td>@customer.CustomerBirthday</td>
+                <td>@customer.CustomerPhoneNumber</td>
+                <td>@customer.CustomerEmail</td>
+                <td>
+                    <!-- Link para visualizar o endereço do cliente -->
+                    <a asp-controller="Address" asp-action="Details" asp-route-customerId="@customer.CustomerId">View Address</a>
+                </td>
+                <td>
+                    <!-- Link para visualizar o bankdata -->
+                    <a asp-controller="BankData" asp-action="Details" asp-route-customerId="@customer.CustomerId">View BankData</a>
+                </td>
+                <td>
+                    <!-- Link para visualizar o login -->
+                    <a asp-controller="Login" asp-action="Details" asp-route-customerId="@customer.CustomerId">View Login</a>
+                </td>
+                <td>
+                    <!-- Link para visualizar o tipo de cliente -->
+                    <a asp-controller="CustomerType" asp-action="Details" asp-route-customerId="@customer.CustomerId">View Customer Type</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

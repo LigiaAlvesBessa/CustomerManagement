@@ -1,0 +1,91 @@
+﻿@model CustomerManagement.Models.Customer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CustomerId" />
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label">Name</label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerBirthday" class="control-label">Birthday</label>
+                <input asp-for="CustomerBirthday" class="form-control" />
+                <span asp-validation-for="CustomerBirthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerPhoneNumber" class="control-label">Phone Number</label>
+                <input asp-for="CustomerPhoneNumber" class="form-control" />
+                <span asp-validation-for="CustomerPhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerEmail" class="control-label">Email</label>
+                <input asp-for="CustomerEmail" class="form-control" />
+                <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerNIF" class="control-label">NIF</label>
+                <input asp-for="CustomerNIF" class="form-control" />
+                <span asp-validation-for="CustomerNIF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthlyPayment" class="control-label">Monthly Payment</label>
+                <input asp-for="MonthlyPayment" class="form-control" />
+                <span asp-validation-for="MonthlyPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label">Start Date</label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressId" class="control-label">Address</label>
+                <select asp-for="AddressId" class="form-control" asp-items="ViewBag.AddressId"></select>
+                <span asp-validation-for="AddressId" class="text-danger"></span>
+                <a asp-controller="Address" asp-action="Create" class="btn btn-link">Create New Address</a>
+                <a asp-controller="Address" asp-action="Details" asp-route-customerId=@Model.CustomerId>View Address</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerTypeId" class="control-label">Customer Type</label>
+                <select asp-for="CustomerTypeId" class="form-control" asp-items="ViewBag.CustomerTypeId"></select>
+                <span asp-validation-for="CustomerTypeId" class="text-danger"></span>
+                <a asp-controller="CustomerType" asp-action="Create" class="btn btn-link">Create New Customer Type</a>
+                <a asp-controller="CustomerType" asp-action="Details" asp-route-customerId=@Model.CustomerId>View Customer Type</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="BankDataId" class="control-label">Bank Data</label>
+                <select asp-for="BankDataId" class="form-control" asp-items="ViewBag.BankDataId"></select>
+                <span asp-validation-for="BankDataId" class="text-danger"></span>
+                <a asp-controller="BankData" asp-action="Create" class="btn btn-link">Create New BankData</a>
+                <a asp-controller="BankData" asp-action="Details" asp-route-customerId=@Model.CustomerId>View Bank Data</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoginId" class="control-label">Login</label>
+                <select asp-for="LoginId" class="form-control" asp-items="ViewBag.LoginId"></select>
+                <span asp-validation-for="LoginId" class="text-danger"></span>
+                <a asp-controller="Login" asp-action="Details" asp-route-customerId=@Model.CustomerId>View Login</a>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,50 @@
+﻿@model CustomerManagement.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Name</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt class = "col-sm-2">Birthday</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerBirthday)
+        </dd>
+        <dt class = "col-sm-2">Phone Number</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerPhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">Email</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerEmail)
+        </dd>
+        <dt class = "col-sm-2">NIF</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CustomerNIF)
+        </dd>
+        <dt class = "col-sm-2">Monthly Payment</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MonthlyPayment)
+        </dd>
+        <dt class = "col-sm-2">Start Date</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-controller="Address" asp-action="Details" asp-route-customerId="@Model.CustomerId">View Address</a> |
+    <a asp-controller="BankData" asp-action="Details" asp-route-customerId="@Model.CustomerId">View BankData</a> |
+    <a asp-controller="Login" asp-action="Details" asp-route-customerId="@Model.CustomerId">View Login</a> |
+    <a asp-controller="CustomerType" asp-action="Details" asp-route-customerId="@Model.CustomerId">View Customer Type</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,23 @@
+﻿@model CustomerManagement.Models.Customer
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Customer</h1>
+
+<form asp-action="Search" method="post">
+    <div class="form-group">
+        <label for="searchTerm">Search Term</label>
+        <input type="text" class="form-control" id="searchTerm" name="searchTerm" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-warning mt-2">
+        @ViewData["Message"]
+    </div>
+}
+

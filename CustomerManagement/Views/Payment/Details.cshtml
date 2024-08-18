@@ -1,0 +1,28 @@
+﻿@model CustomerManagement.Models.Payment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">Pay Day</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PayDay)
+        </dd>
+        <dt class = "col-sm-2">Amount Paid</dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AmountPaid)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Customer" asp-action="DetailsPayment" asp-route-paymentId="@Model.PaymentId">View Customer</a> |
+    <a asp-controller="Service" asp-action="DetailsPayment" asp-route-paymentId="@Model.PaymentId">View Service</a> |
+    <a asp-controller="PaymentStatus" asp-action="Details" asp-route-paymentId="@Model.PaymentId">View Payment Status</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,56 @@
+﻿@model CustomerManagement.Models.Payment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Payment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PayDay" class="control-label"></label>
+                <input asp-for="PayDay" class="form-control" type="date"/>
+                <span asp-validation-for="PayDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AmountPaid" class="control-label"></label>
+                <input asp-for="AmountPaid" class="form-control" />
+                <span asp-validation-for="AmountPaid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label">Customer</label>
+                <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.Customers"></select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+                <a asp-controller="Customer" asp-action="Create" class="btn btn-link">Create New Customer</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceId" class="control-label">Service</label>
+                <select asp-for="ServiceId" class="form-control" asp-items="@ViewBag.Services"></select>
+                <span asp-validation-for="ServiceId" class="text-danger"></span>
+                <a asp-controller="Service" asp-action="Create" class="btn btn-link">Create New Service</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentStatusId" class="control-label">Payment Status</label>
+                <select asp-for="PaymentStatusId" class="form-control" asp-items="@ViewBag.PaymentStatus"></select>
+                <span asp-validation-for="PaymentStatusId" class="text-danger"></span>
+                <a asp-controller="PaymentStatus" asp-action="Create" class="btn btn-link">Create New Payment Status</a>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
